@@ -16,6 +16,9 @@
   <label for="pers_id">Personas kods:</label>
   <input type="number" name="pers_id"><br>
 
+  <label for="age">Vecums:</label>
+  <input type="number" name="age"><br>
+
   <label for="contacts">Kontaktinformācija:</label>
   <input type="text" name="contacts"><br>
 

@@ -32,9 +32,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
+    public function patient()
+    {
+        return $this->hasMany(patient::class);
+    }
 }

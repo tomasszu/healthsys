@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\message;
-use App\management_post;
+use App\Http\Controllers;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +34,21 @@ Route::post('/register',[App\Http\Controllers\registrationController::class, 'st
 Route::get('/pacients',[App\Http\Controllers\patientController::class, 'index']);
 
 Route::get('/arsts',[App\Http\Controllers\doctorController::class, 'index']);
+
+Route::get('/arsts/skatit_pacientu',[App\Http\Controllers\doctorVisitController::class, 'index']);
+
+Route::get('/arsts/nonemt_pacientu',[App\Http\Controllers\doctorVisitController::class, 'remove_patient']);
+
+
+Route::post('/arsts/pienemt_prakse',[App\Http\Controllers\doctorVisitController::class, 'new_patient']);
+
+Route::get('/arsts/pacienta_vesture/{id}',[App\Http\Controllers\medHistoryController::class, 'index']);
+
+Route::post('/arsts/pacienta_vesture/{id}/pievienot',[App\Http\Controllers\medHistoryController::class, 'create']);
+
+Route::get('/arsts/norikojums_pacientam/{id}',[App\Http\Controllers\doctorNoteController::class, 'index']);
+
+
 
 
 

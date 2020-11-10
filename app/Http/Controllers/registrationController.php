@@ -34,6 +34,7 @@ class registrationController extends Controller
       $patient->user_id = $user->id;
       $patient->name = request('name');
       $patient->pers_id = request('pers_id');
+      $patient->age = request('age');      
       $patient->contacts = request('contacts');
       $patient->save();
 
