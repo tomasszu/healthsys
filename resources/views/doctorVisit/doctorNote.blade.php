@@ -5,10 +5,18 @@
 
 <hr>
 
-<form method="POST" action="/register">
+<form method="POST" action="/arsts/norikojums_pacientam/{{$patient_id}}/izrakstit">
 	{{ csrf_field() }}
-  <label for="name">Kam paredzēts izraksts:</label>
-  <input type="text" name="name"><br> 
+
+  <label for="recepient">Kam paredzēts izraksts:</label>
+  <select name="recepient">
+      <option selected="selected" value="">
+        <?php 
+            foreach ($specialists as $specialist) {
+            echo '<option value="'.$specialist->id.'">' . $specialist->name .'</option>'."\r\n";
+             }
+        ?>
+  </select><br>
 
   <label for="diagnosis">Pamatslimība:</label>
   <input type="text" name="diagnosis"><br>

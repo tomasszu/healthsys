@@ -18,6 +18,8 @@
    <hr>   
    <a href="/arsts/norikojums_pacientam/{{$patient->id}}">Izrakstīt norīkojumu / zīmi</a>
    <hr>   
+   <a href="/arsts/izrakstit_recepti/{{$patient->id}}">Izrakstīt recepti</a>
+   <hr>   
    <a href="/arsts">Atpakaļ</a>   
     
 </body>

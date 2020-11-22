@@ -28,12 +28,18 @@ class sessionsController extends Controller
 
       if(auth()->user()->user_class == 1)
       {
+        dd(auth()->user()->role->name);
         return redirect('/pacients');
       }
       else if(auth()->user()->user_class == 2)
       {
         return redirect('/arsts');
       }
+      else if(auth()->user()->user_class == 3)
+      {
+        return redirect('/farmaceits');
+      }
+
 
 
     }

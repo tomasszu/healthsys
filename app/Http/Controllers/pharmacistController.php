@@ -2,30 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\patient;
-use App\Models\medHistory;
+use App\Models\pharmacist;
 use App\Models\drug;
-use App\Models\doctor;
-use App\Models\doctorNote;
 use Illuminate\Http\Request;
 
-class PatientController extends Controller
+class pharmacistController extends Controller
 {
-    
+
     public function __construct()
     {
        $this->middleware('auth')->except([]);
     }
 
+
     public function index()
     {
-        $patient=patient::where('user_id', auth()->id())->first();
-        $family_doctor_id=$patient->family_doctor_id;
-        $family_doctor=doctor::where('id',$family_doctor_id)->first();
-        $history=medHistory::where('patient_id',$patient->id)->latest()->get();
-        $notes=doctorNote::where('patient_id',$patient->id)->latest()->get();
-        $prescriptions=$patient->drugs()->get();
-        return view('user.patient',compact('history','notes','prescriptions','family_doctor','patient'));
+        $pharmacist=pharmacist::where('user_id', auth()->id())->first();
+        $drugs = drug::latest()->get();
+        return view('user.pharmacist',['pharmacist'=>$pharmacist],compact('drugs'));
+
     }
 
     /**
@@ -52,10 +47,10 @@ class PatientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\patient  $patient
+     * @param  \App\Models\pharmacist  $pharmacist
      * @return \Illuminate\Http\Response
      */
-    public function show(patient $patient)
+    public function show(pharmacist $pharmacist)
     {
         //
     }
@@ -63,10 +58,10 @@ class PatientController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\patient  $patient
+     * @param  \App\Models\pharmacist  $pharmacist
      * @return \Illuminate\Http\Response
      */
-    public function edit(patient $patient)
+    public function edit(pharmacist $pharmacist)
     {
         //
     }
@@ -75,10 +70,10 @@ class PatientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\patient  $patient
+     * @param  \App\Models\pharmacist  $pharmacist
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, patient $patient)
+    public function update(Request $request, pharmacist $pharmacist)
     {
         //
     }
@@ -86,10 +81,10 @@ class PatientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\patient  $patient
+     * @param  \App\Models\pharmacist  $pharmacist
      * @return \Illuminate\Http\Response
      */
-    public function destroy(patient $patient)
+    public function destroy(pharmacist $pharmacist)
     {
         //
     }

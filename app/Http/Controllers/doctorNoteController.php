@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\doctorNote;
+use App\Models\doctor;
 use Illuminate\Http\Request;
 
 class DoctorNoteController extends Controller
@@ -12,19 +13,35 @@ class DoctorNoteController extends Controller
        $this->middleware('auth')->except([]);
     }
 
-    public function index()
+    public function index($id)
     {
-        return view('doctorVisit.doctorNote');
+        $specialists=doctor::where('doctor_class',2)->get();
+        return view('doctorVisit.doctorNote',compact('specialists'),['patient_id'=>$id]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create($id)
     {
-        //
+        if(request('recomendations') != NULL)
+        {
+        $note=new doctorNote;
+        $note->patient_id = $id;
+        $reporting_doctor = doctor::where('user_id',auth()->id())->first();
+        $note->reporting_doctor_id = $reporting_doctor->id;
+        $note->recepient = request('recepient');
+        $note->diagnosis = request('diagnosis');
+        $note->complications = request('complications');
+        $note->recomendations = request('recomendations');
+        $note->regime = request('regime');
+        $note->save();
+
+        return redirect('/arsts');
+        }
+        else
+        {
+            return back()->withErrors([
+            'message' => 'Rekomendācijas ir obligāts lauks'
+            ]);
+        }
     }
 
     /**

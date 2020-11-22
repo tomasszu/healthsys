@@ -35,6 +35,8 @@ Route::get('/pacients',[App\Http\Controllers\patientController::class, 'index'])
 
 Route::get('/arsts',[App\Http\Controllers\doctorController::class, 'index']);
 
+Route::get('/farmaceits',[App\Http\Controllers\pharmacistController::class, 'index']);
+
 Route::get('/arsts/skatit_pacientu',[App\Http\Controllers\doctorVisitController::class, 'index']);
 
 Route::get('/arsts/nonemt_pacientu',[App\Http\Controllers\doctorVisitController::class, 'remove_patient']);
@@ -48,8 +50,21 @@ Route::post('/arsts/pacienta_vesture/{id}/pievienot',[App\Http\Controllers\medHi
 
 Route::get('/arsts/norikojums_pacientam/{id}',[App\Http\Controllers\doctorNoteController::class, 'index']);
 
+Route::post('/arsts/norikojums_pacientam/{id}/izrakstit',[App\Http\Controllers\doctorNoteController::class, 'create']);
 
+Route::get('/arsts/izrakstit_recepti/{id}',[App\Http\Controllers\doctorVisitController::class, 'prescription']);
 
+Route::post('/arsts/recepte_pacientam/{id}/izrakstit',[App\Http\Controllers\drugController::class, 'prescribe']);
+
+Route::get('/farmaceits/skatit_medikamentu',[App\Http\Controllers\drugController::class, 'show']);
+
+Route::post('/farmaceits/pievienot_medikamentu',[App\Http\Controllers\drugController::class, 'store']);
+
+Route::delete('/farmaceits/dzest_medikamentu',[App\Http\Controllers\drugController::class, 'destroy']);
+
+Route::post('/farmaceits/klienta_receptes',[App\Http\Controllers\drugController::class, 'index']);
+
+Route::delete('/farmaceits/pacients/{patient}/iznemt_recepti/{drug}',[App\Http\Controllers\drugController::class, 'destroy_prescription']);
 
 
 //Auth::routes();

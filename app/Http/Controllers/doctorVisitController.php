@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\doctor;
+use App\Models\drug;
 use App\Models\patient;
 
 class doctorVisitController extends Controller
@@ -50,6 +51,13 @@ class doctorVisitController extends Controller
     	//$patient->family_doctor_id=$doctor->id;
     	
 		return redirect('/arsts'); 
+    }
+
+    public function prescription($id)
+    {
+        $patient = patient::where('id',$id)->first();
+        $drugs = drug::latest()->get();
+        return view('doctorVisit.prescribeDrug',['patient'=>$patient],compact('drugs'));
     }
 
     public function remove_patient()

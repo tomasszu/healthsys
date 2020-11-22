@@ -32,8 +32,19 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function patient()
+    public function role()
     {
-        return $this->hasMany(patient::class);
+        if($this->user_class == 1)
+          {
+            return $this->hasOne('App\Models\patient');
+          }
+        else if($this->user_class == 2)
+          {
+            return $this->hasOne('App\Models\Doctor');
+          }
+        else if($this->user_class == 3)
+          {
+            return $this->hasOne('App\Models\pharmacist');
+          }
     }
 }
