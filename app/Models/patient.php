@@ -19,6 +19,18 @@ class patient extends Model
         return $this->belongsToMany('App\Models\drug', 'patient_drugs');
     }
 
+    public function history()
+    {
+        return $this->hasMany('App\Models\medHistory');
+    }
+
+    public function notes()
+    {
+        return $this->hasMany('App\Models\doctorNote');
+    }
+
+
+
 }
 
 

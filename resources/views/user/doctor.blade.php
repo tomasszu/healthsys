@@ -9,8 +9,8 @@
 <body>
    <h1>Sveicināti, {{Auth::user()->name}} </h1>
    <h2>Ārsta profils</h2>
-   <h3>{{$doctor->name}}</h3>
-   <h3>{{$doctor->info}}</h3>
+   <h3>{{Auth::user()->role->name}}</h3>
+   <h3>{{Auth::user()->role->info}}</h3>
    <p>Apskatīt prakses pacientus</p>
    <form method="GET" action="/arsts/skatit_pacientu">
       {{ csrf_field() }}

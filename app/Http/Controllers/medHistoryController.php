@@ -13,6 +13,7 @@ class MedHistoryController extends Controller
     public function __construct()
     {
        $this->middleware('auth')->except([]);
+       $this->middleware('doctor');
     }
 
     public function index($id)
@@ -20,7 +21,6 @@ class MedHistoryController extends Controller
         $history=medHistory::where('patient_id',$id)->latest()->get();
         return view('doctorVisit.history.index',compact('history'),['patient_id'=>$id]);
 
-        dd($history);
     }
 
     /**

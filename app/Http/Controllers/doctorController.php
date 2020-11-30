@@ -10,15 +10,15 @@ class DoctorController extends Controller
 {
     public function __construct()
     {
-       $this->middleware('auth')->except([]);
+       $this->middleware('auth');
+       $this->middleware('doctor');
     }
 
 
     public function index()
     {
-        $doctor=doctor::where('user_id', auth()->id())->first();
-        $assigned_patients=patient::where('family_doctor_id',$doctor->id)->get();
-        return view('user.doctor',['doctor'=>$doctor],compact('assigned_patients'));
+        $assigned_patients=auth()->user()->role->patients()->get();
+        return view('user.doctor',compact('assigned_patients'));
     }
 
     /**

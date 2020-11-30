@@ -10,7 +10,9 @@ class DoctorNoteController extends Controller
 {
     public function __construct()
     {
-       $this->middleware('auth')->except([]);
+       $this->middleware('auth');
+       $this->middleware('doctor');
+
     }
 
     public function index($id)
@@ -25,7 +27,7 @@ class DoctorNoteController extends Controller
         {
         $note=new doctorNote;
         $note->patient_id = $id;
-        $reporting_doctor = doctor::where('user_id',auth()->id())->first();
+        $reporting_doctor = auth()->user()->role;
         $note->reporting_doctor_id = $reporting_doctor->id;
         $note->recepient = request('recepient');
         $note->diagnosis = request('diagnosis');
@@ -34,7 +36,7 @@ class DoctorNoteController extends Controller
         $note->regime = request('regime');
         $note->save();
 
-        return redirect('/arsts');
+        return redirect('/arsts/skatit_pacientu/'.$id);
         }
         else
         {

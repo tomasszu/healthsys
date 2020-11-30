@@ -12,14 +12,14 @@ class pharmacistController extends Controller
     public function __construct()
     {
        $this->middleware('auth')->except([]);
+       $this->middleware('pharmacist');
     }
 
 
     public function index()
     {
-        $pharmacist=pharmacist::where('user_id', auth()->id())->first();
         $drugs = drug::latest()->get();
-        return view('user.pharmacist',['pharmacist'=>$pharmacist],compact('drugs'));
+        return view('user.pharmacist',compact('drugs'));
 
     }
 

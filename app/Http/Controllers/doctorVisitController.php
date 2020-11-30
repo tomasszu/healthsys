@@ -13,6 +13,7 @@ class doctorVisitController extends Controller
     public function __construct()
     {
        $this->middleware('auth')->except([]);
+       $this->middleware('doctor');
     }
 
 
@@ -24,15 +25,21 @@ class doctorVisitController extends Controller
         return view('doctorVisit.patientProfile',['patient'=>$patient]);
     }
 
+    public function return_index($id)
+    {
+        $patient=patient::where('id',$id)->first();
+        //dd($patient);
+        return view('doctorVisit.patientProfile',['patient'=>$patient]);
+    }
+
     public function new_patient()
     {
     	$pers_id=request('pers_id');
-    	$doctor=doctor::where('user_id',auth()->id())->first();
     	if(patient::where('pers_id',$pers_id)->first() != NULL)
     	{
 	    	if((patient::where('pers_id',$pers_id)->first())->family_doctor_id == NULL )
 	    	{
-	    		patient::where('pers_id',$pers_id)->update(['family_doctor_id'=> $doctor->id]);
+	    		patient::where('pers_id',$pers_id)->update(['family_doctor_id'=> auth()->user()->role->id]);
 	    	}
 	    	else
 	    	{

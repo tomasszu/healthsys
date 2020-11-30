@@ -11,31 +11,12 @@ class Doctor extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'pers_id',
-        'name',
-        'password',
-        'doctor_class'
-    ];
+    public function patients()
+    {
+        if($this->doctor_class = 1)
+        {
+            return $this->hasMany('App\Models\patient','family_doctor_id');
+        }
+    }
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
 }

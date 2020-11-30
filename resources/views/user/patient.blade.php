@@ -11,8 +11,12 @@
    <h2>Pacienta profils</h2>
    <hr>
    <h4> Pacients pierakstīts ģimenes ārsta praksē : </h4>
+   @if($family_doctor != NULL)
    <h5> {{$family_doctor->name}} </h5>
    <p> {{$family_doctor->info}} </p>
+   @else
+   <p> pacientam nepieciešams pierakstīties kādā ģimenes ārsta praksē </p>
+   @endif
    <hr>
    <p>Izvēlieties vēlamo darbību!</p>
    <h5>Mana ārstniecības vēsture:</h5>

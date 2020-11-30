@@ -9,8 +9,8 @@
 <body>
    <h1>Sveicināti, {{Auth::user()->name}} </h1>
    <h2>Farmācijas profils</h2>
-   <h3>{{$pharmacist->name}}</h3>
-   <h3>{{$pharmacist->info}}</h3>
+   <h3>{{Auth::user()->role->name}}</h3>
+   <h3>{{Auth::user()->role->info}}</h3>
    <hr>
    <h5>Apskatīt pieejamos medikamentus</h5>
    <form method="GET" action="/farmaceits/skatit_medikamentu">

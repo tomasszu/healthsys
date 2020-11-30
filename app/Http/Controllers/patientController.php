@@ -15,17 +15,16 @@ class PatientController extends Controller
     public function __construct()
     {
        $this->middleware('auth')->except([]);
+       $this->middleware('patient');
     }
 
     public function index()
     {
-        $patient=patient::where('user_id', auth()->id())->first();
-        $family_doctor_id=$patient->family_doctor_id;
-        $family_doctor=doctor::where('id',$family_doctor_id)->first();
-        $history=medHistory::where('patient_id',$patient->id)->latest()->get();
-        $notes=doctorNote::where('patient_id',$patient->id)->latest()->get();
-        $prescriptions=$patient->drugs()->get();
-        return view('user.patient',compact('history','notes','prescriptions','family_doctor','patient'));
+        $family_doctor=doctor::where('id',auth()->user()->role->family_doctor_id)->first();
+        $history=auth()->user()->role->history()->latest()->get();
+        $notes=auth()->user()->role->notes()->latest()->get();
+        $prescriptions=auth()->user()->role->drugs()->get();
+        return view('user.patient',compact('history','notes','prescriptions','family_doctor'));
     }
 
     /**

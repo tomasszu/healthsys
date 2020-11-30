@@ -37,6 +37,9 @@
   <label for="other">Brīvais režīms </label><br>
   <input type="submit" value="Izrakstīt">
 
+<hr>
+   <a href="/arsts/skatit_pacientu/{{$patient_id}}">Atpakaļ</a>   
+
   @include('layouts.errors')
 </form>
 <hr>

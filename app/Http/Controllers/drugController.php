@@ -14,6 +14,9 @@ class drugController extends Controller
     public function __construct()
     {
        $this->middleware('auth')->except([]);
+       $this->middleware('pharmacist')->except(['prescribe']);
+       $this->middleware('doctor')->only(['prescribe']);
+
     }
 
 
@@ -43,7 +46,7 @@ class drugController extends Controller
         $prescription->drug_id = request('drug');
         $prescription->save();
 
-        return redirect('/arsts');
+        return redirect('/arsts/skatit_pacientu/'.$id);
         }
         else
         {

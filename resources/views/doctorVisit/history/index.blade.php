@@ -30,7 +30,7 @@
        @endforeach
     </ul>
 <hr>
-   <a href="/arsts">Atpakaļ</a>   
+   <a href="/arsts/skatit_pacientu/{{$patient_id}}">Atpakaļ</a>   
 
 
 </body>

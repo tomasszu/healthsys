@@ -22,8 +22,8 @@
 
   @include('layouts.errors')
 </form>
-<hr>
 
-<a href="/arsts">Atpakaļ</a>
+<hr>
+   <a href="/arsts/skatit_pacientu/{{$patient->id}}">Atpakaļ</a>   
 
 @endsection

@@ -39,6 +39,8 @@ Route::get('/farmaceits',[App\Http\Controllers\pharmacistController::class, 'ind
 
 Route::get('/arsts/skatit_pacientu',[App\Http\Controllers\doctorVisitController::class, 'index']);
 
+Route::get('/arsts/skatit_pacientu/{id}',[App\Http\Controllers\doctorVisitController::class, 'return_index']);
+
 Route::get('/arsts/nonemt_pacientu',[App\Http\Controllers\doctorVisitController::class, 'remove_patient']);
 
 
