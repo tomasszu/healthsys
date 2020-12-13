@@ -19,7 +19,9 @@ class pharmacistController extends Controller
     public function index()
     {
         $drugs = drug::latest()->get();
-        return view('user.pharmacist',compact('drugs'));
+        $available_inventory = auth()->user()->role->inventory()->get();
+        //dd($available_inventory->drug()->get());
+        return view('user.pharmacist',compact('drugs','available_inventory'));
 
     }
 

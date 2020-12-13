@@ -9,6 +9,11 @@
 </head>
 <body>
 	<h1>{{ $drug->name }}</h1>
+	@if($drug->count() != NULL)
+		<h3>Skaits aptiekā: {{$drug->count()}} </h3>
+	@else
+		<h3>Aptiekā šobrīd nav pieejams </h3>
+	@endif
         <h3>Ražotājs: {{ $drug->producer }}</h3>
         <h3>Apraksts:</h3>
         <p>{{ $drug->description }}</p>

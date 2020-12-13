@@ -64,7 +64,7 @@ Route::post('/farmaceits/pievienot_medikamentu',[App\Http\Controllers\drugContro
 
 Route::delete('/farmaceits/dzest_medikamentu',[App\Http\Controllers\drugController::class, 'destroy']);
 
-Route::post('/farmaceits/klienta_receptes',[App\Http\Controllers\drugController::class, 'index']);
+Route::get('/farmaceits/klienta_receptes',[App\Http\Controllers\drugController::class, 'index']);
 
 Route::delete('/farmaceits/pacients/{patient}/iznemt_recepti/{drug}',[App\Http\Controllers\drugController::class, 'destroy_prescription']);
 

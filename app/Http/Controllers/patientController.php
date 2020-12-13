@@ -23,7 +23,7 @@ class PatientController extends Controller
         $family_doctor=doctor::where('id',auth()->user()->role->family_doctor_id)->first();
         $history=auth()->user()->role->history()->latest()->get();
         $notes=auth()->user()->role->notes()->latest()->get();
-        $prescriptions=auth()->user()->role->drugs()->get();
+        $prescriptions=auth()->user()->role->prescriptions()->latest()->get();
         return view('user.patient',compact('history','notes','prescriptions','family_doctor'));
     }
 

@@ -14,9 +14,10 @@ class patient extends Model
     	return $this->belongsTo(User::class);
     }
 
-    public function drugs()
+    public function prescriptions()
     {
-        return $this->belongsToMany('App\Models\drug', 'patient_drugs');
+        return $this->hasMany('App\Models\patient_drug');
+        //return $this->belongsToMany('App\Models\drug', 'patient_drugs');
     }
 
     public function history()

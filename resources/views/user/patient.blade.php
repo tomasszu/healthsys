@@ -58,10 +58,20 @@
    <h5>Man izrakstītās receptes:</h5>
     <ul>
        @foreach ($prescriptions as $prescription)
-           <li>{{ $prescription->name }}</li>
-           <h5>Ražotājs: {{ $prescription->producer }}</h5>
-           <h5>Apraksts:</h5>
-           <p>{{ $prescription->description }}</p>
+          @if($prescription->active == 1)
+            <li>{{ $prescription->drug->name }}</li>
+            <h5>Ražotājs: {{ $prescription->drug->producer }}</h5>
+            <h5>Izrakstošais ārsts: {{ $prescription->doctor->name }}</h5>
+            <h5>Apraksts:</h5>
+            <p>{{ $prescription->drug->description }}</p>
+          @else
+            <h5><b>Izņemta recepte</b></h5>
+            <i>
+            <li>{{ $prescription->drug->name }}</li>
+            <h5>Ražotājs: {{ $prescription->drug->producer }}</h5>
+            <h5>Izrakstošais ārsts: {{ $prescription->doctor->name }}</h5>
+            </i>
+          @endif
        @endforeach
     </ul>
    <hr>   
