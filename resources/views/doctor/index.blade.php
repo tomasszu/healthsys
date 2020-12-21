@@ -11,6 +11,7 @@
    <h2>Ārsta profils</h2>
    <h3>{{Auth::user()->role->name}}</h3>
    <h3>{{Auth::user()->role->info}}</h3>
+   <a href="/zinojumi/3">Ziņojumi</a> 
    <p>Apskatīt prakses pacientus</p>
    <form method="GET" action="/arsts/skatit_pacientu">
       {{ csrf_field() }}

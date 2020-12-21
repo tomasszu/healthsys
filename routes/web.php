@@ -76,6 +76,11 @@ Route::get('/pacients/meklet_arstu',[App\Http\Controllers\patientController::cla
 
 Route::get('/pacients/meklet_specialistus',[App\Http\Controllers\patientController::class, 'find_doctor']);
 
+Route::get('/zinojumi/{flag}',[App\Http\Controllers\MessageController::class, 'index']);
+
+Route::post('/zinojumi/sutit',[App\Http\Controllers\MessageController::class, 'store']);
+
+Route::get('/zinojumi/{message}/skatit',[App\Http\Controllers\MessageController::class, 'show']);
 
 
 //Auth::routes();

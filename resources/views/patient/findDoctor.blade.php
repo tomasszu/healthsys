@@ -28,6 +28,10 @@
        @foreach ($doctors as $doctor)
            <li>{{ $doctor->name }}</li>
            <p>{{ $doctor->info }}</p>
+           <form method="GET" class="button_form" action="/zinojumi/2">
+              <input type="hidden" id="recepient" name="recepient" value="{{$doctor->id}}">
+              <button class="button" type="submit">Sazināties</button>
+           </form>
            <hr>
        @endforeach
     </ul>

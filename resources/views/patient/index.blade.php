@@ -35,9 +35,9 @@
            <li>Datums :{{ $note->created_at }}</li>
            <h5>Izrakstošais ārsts :</h5>
            <p> {{ $note->reporting_doctor->name }}</p>
-           @if($note->recepient_doctor != NULL)
+           @if($note->recepient != NULL)
 	           <h5>Kam paredzēts izraksts:</h5>
-	           <p> {{ $note->recepient_doctor->name }}</p>
+	           <p> {{ $note->recepient_spec->name }}</p>
            @endif
            <h5>Pamatslimība:</h5>
            <p>{{ $note->diagnosis }}</p>
@@ -78,6 +78,6 @@
    <a href="/logout">Izrakstīties</a> 
    <a href="/pacients/{{Auth::user()->role->id}}/dati">Personas dati</a> 
    <a href="/pacients/meklet_arstu">Meklēt ārstu</a> 
-   <a href="/logout">Ziņojumi</a> 
+   <a href="/zinojumi/0">Ziņojumi</a> 
 </body>
 </html>

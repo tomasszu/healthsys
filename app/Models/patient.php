@@ -14,6 +14,12 @@ class patient extends Model
     	return $this->belongsTo(User::class);
     }
 
+    public function family_doc()
+    {
+        return $this->belongsTo('App\Models\Doctor','family_doctor_id');
+    }
+
+
     public function prescriptions()
     {
         return $this->hasMany('App\Models\patient_drug');

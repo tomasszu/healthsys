@@ -9,9 +9,9 @@ class doctorNote extends Model
 {
     use HasFactory;
 
-    public function recepient_doctor()
+    public function recepient_spec()
     {
-        return $this->belongsTo('App\Models\Doctor','recepient');
+        return $this->belongsTo('App\Models\doctorClass','recepient');
     }
 
     public function reporting_doctor()
