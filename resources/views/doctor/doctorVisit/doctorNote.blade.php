@@ -22,9 +22,9 @@
   <input type="text" name="diagnosis"><br>
 
   <label for="complications">Sarežģījumi (blakusslimības):</label>
-  <input type="text" name="diagnosis"><br>
+  <input type="text" name="complications"><br>
 
-  <label for="complications">Rekomendācijas, ārsta slēdziens, izmeklējumu un rehabilitācijas nepieciešamība:</label><br>
+  <label for="recomendations">Rekomendācijas, ārsta slēdziens, izmeklējumu un rehabilitācijas nepieciešamība:</label><br>
 
   <textarea name="recomendations" id="recomendations"></textarea><br>
 

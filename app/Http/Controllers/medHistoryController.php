@@ -19,7 +19,7 @@ class MedHistoryController extends Controller
     public function index($id)
     {
         $history=medHistory::where('patient_id',$id)->latest()->get();
-        return view('doctorVisit.history.index',compact('history'),['patient_id'=>$id]);
+        return view('doctor.doctorVisit.history.index',compact('history'),['patient_id'=>$id]);
 
     }
 

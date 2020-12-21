@@ -68,6 +68,15 @@ Route::get('/farmaceits/klienta_receptes',[App\Http\Controllers\drugController::
 
 Route::delete('/farmaceits/pacients/{patient}/iznemt_recepti/{drug}',[App\Http\Controllers\drugController::class, 'destroy_prescription']);
 
+Route::get('/pacients/{patient}/dati',[App\Http\Controllers\patientController::class, 'show']);
+
+Route::patch('/pacients/{patient}/labot_datus',[App\Http\Controllers\patientController::class, 'update']);
+
+Route::get('/pacients/meklet_arstu',[App\Http\Controllers\patientController::class, 'find_doctor']);
+
+Route::get('/pacients/meklet_specialistus',[App\Http\Controllers\patientController::class, 'find_doctor']);
+
+
 
 //Auth::routes();
 

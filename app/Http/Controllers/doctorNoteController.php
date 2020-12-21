@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\doctorNote;
+use App\Models\doctorClass;
 use App\Models\doctor;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,8 @@ class DoctorNoteController extends Controller
 
     public function index($id)
     {
-        $specialists=doctor::where('doctor_class',2)->get();
-        return view('doctorVisit.doctorNote',compact('specialists'),['patient_id'=>$id]);
+        $specialists=doctorClass::get();
+        return view('doctor.doctorVisit.doctorNote',compact('specialists'),['patient_id'=>$id]);
     }
 
     public function create($id)

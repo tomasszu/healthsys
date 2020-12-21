@@ -22,14 +22,14 @@ class doctorVisitController extends Controller
     	$id=request('patient');
     	$patient=patient::where('id',$id)->first();
     	//dd($patient);
-        return view('doctorVisit.patientProfile',['patient'=>$patient]);
+        return view('doctor.doctorVisit.patientProfile',['patient'=>$patient]);
     }
 
     public function return_index($id)
     {
         $patient=patient::where('id',$id)->first();
         //dd($patient);
-        return view('doctorVisit.patientProfile',['patient'=>$patient]);
+        return view('doctor.doctorVisit.patientProfile',['patient'=>$patient]);
     }
 
     public function new_patient()
@@ -64,7 +64,7 @@ class doctorVisitController extends Controller
     {
         $patient = patient::where('id',$id)->first();
         $drugs = drug::latest()->get();
-        return view('doctorVisit.prescribeDrug',['patient'=>$patient],compact('drugs'));
+        return view('doctor.doctorVisit.prescribeDrug',['patient'=>$patient],compact('drugs'));
     }
 
     public function remove_patient()

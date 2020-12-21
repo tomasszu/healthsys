@@ -76,6 +76,8 @@
     </ul>
    <hr>   
    <a href="/logout">Izrakstīties</a> 
-    
+   <a href="/pacients/{{Auth::user()->role->id}}/dati">Personas dati</a> 
+   <a href="/pacients/meklet_arstu">Meklēt ārstu</a> 
+   <a href="/logout">Ziņojumi</a> 
 </body>
 </html>
