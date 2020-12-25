@@ -38,9 +38,34 @@
   <input type="submit" value="Izrakstīt">
 
 <hr>
+
+  @if(Auth::user()->role->doctor_class != 1)
+    <h1>Man paredzētie norīkojumi:</h1>
+    <ul>
+       @foreach ($notes as $note)
+           <li>Datums :{{ $note->created_at }}</li>
+           <h5>Izrakstošais ārsts :</h5>
+           <p> {{ $note->reporting_doctor->name }}</p>
+           <h5>Pamatslimība:</h5>
+           <p>{{ $note->diagnosis }}</p>
+           @if($note->complications != NULL)
+             <h5>Sarežģījumi (blakusslimības):</h5>
+             <p>{{ $note->complications }}</p>
+           @endif
+           <h5>Rekomendācijas, ārsta slēdziens, izmeklējumu un rehabilitācijas nepieciešamība:</h5>
+           <p>{{ $note->recomendations }}</p>
+           @if($note->regime != NULL)
+             <h5>Režīma norādījumi:</h5>
+             <p>{{ $note->regime }}</p>
+           @endif
+           <hr>
+       @endforeach
+    </ul>
+  @endif
+  @include('layouts.errors')
+
    <a href="/arsts/skatit_pacientu/{{$patient_id}}">Atpakaļ</a>   
 
-  @include('layouts.errors')
 </form>
 <hr>
 

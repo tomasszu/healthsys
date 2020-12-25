@@ -7,6 +7,8 @@ use App\Models\Doctor;
 use App\Models\patient;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MailNotify;
 
 class MessageController extends Controller
 {
@@ -59,6 +61,8 @@ class MessageController extends Controller
         {
             $message->for_user = request('receiver');
             $message->save();
+            //dd($email);
+            $this->email(request('text'),request('receiver'));
             return redirect('/zinojumi/0');
         }
         else
@@ -67,9 +71,20 @@ class MessageController extends Controller
             $patient = patient::where('pers_id',$pers_id)->first();
             $message->for_user = $patient->user_id;
             $message->save();
+            $this->email(request('text'),$patient->user_id);
             return redirect('/zinojumi/3');
         }
 
+    }
+
+    public function email($text,$receiver)
+    {
+            Mail::raw($text, function ($mail) use ($receiver) {
+                $email = User::where('id',$receiver)->first()->email;
+                $name = User::where('id',$receiver)->first()->name;
+                $mail->to($email, $name);
+                $mail->subject('Zinojums no '. auth()->user()->name);
+            });
     }
 
     /**

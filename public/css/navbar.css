@@ -1,0 +1,48 @@
+ul.navbar_bar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: limegreen;
+  position: sticky;
+  top: 0;
+}
+
+.navbar_profile{
+  float: right;
+}
+
+li.navbar {
+  float: left;
+}
+
+li a.navbarA {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li.picture a.picture {
+  padding: 0px;
+    width: 60px;
+    border-radius: 50%;
+    overflow: visible;
+    margin-top: -6px;
+}
+
+li.navbar a.navbarA:hover {
+  background-color: #111;
+}
+
+li.navbar_profile a.navbarA:hover{
+  background-color: #111;
+}
+
+img{
+  border-radius: 50%;
+  width: 50px;
+  transition: 0.3s;
+
+}

@@ -19,6 +19,9 @@ class registrationController extends Controller
       $this->validate(request(), [
        'name' => 'required',
        'pers_id' => 'required',
+       'email' => 'required',
+       'age' => 'required',
+       'contacts' => 'required',
        'password' => 'required|confirmed'
 
 
@@ -28,6 +31,7 @@ class registrationController extends Controller
     	$user->name = request('name');
     	$user->pers_id = request('pers_id');
     	$user->password = bcrypt(request('password'));
+      $user->email = request('email');
     	$user->save();
 
       $patient = new patient;

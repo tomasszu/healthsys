@@ -1,0 +1,120 @@
+.pinkForm{
+	min-height:100vh;
+	background-image:linear-gradient(to bottom,#fff5f7,#f687b3);
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	color: #d53f8c;
+
+}
+
+.roundedForm{
+	background-color:#fff;
+	background-color:rgba(255,255,255,1);
+	border-radius:.8rem;
+	transition: 2s;
+
+}
+
+.roundedFormBorder{
+	border: 0px solid;
+	display:flex;
+	border-top-width:12px;
+	border-color:#d53f8c;
+	border-radius:.5rem;
+}
+
+.formImagePart{
+	width:33.333333%;
+	padding-top:1.5rem;
+	display:flex;
+	justify-content:center;
+}
+
+.formImage{
+	width:4rem;
+	padding:.75rem;
+	height: :4rem;
+	border: 2px solid green;
+	width: 50px;
+	height: 50px;
+	filter: hue-rotate(200deg);
+	color:#fff;
+	border-radius:9999px;
+	transition: 5s;
+}
+
+.formFields{
+	width: 100%;
+	padding-top:2rem;
+	padding-right:1rem;
+	color:#382434;
+	transition: 1s;
+}
+
+.formHeader{
+	font-weight:700;
+	color:#b83280;
+}
+
+.first{
+	width:48%;
+	margin-bottom: 9px;
+	float: left;
+}
+
+.second{
+	width: 48%;
+	float: right;
+	margin-bottom: 7px;
+}
+
+.formButtons{
+	padding:1rem;
+	display:flex;
+	margin-right:0;
+	margin-left:1rem;
+}
+
+.cancelButton{
+	background-color:#f7fafc;
+	color:#cbd5e0;
+	margin-right: 10px;
+	padding-left:1rem;
+	padding-right:1rem;
+	padding-top:.75rem;
+	padding-bottom:.75rem;
+	text-align:center;
+	border-radius:.5rem;
+	font-weight:700;
+	font-size:.875rem;
+	text-decoration: none;
+
+}
+
+.cancelButton:hover{
+	background-color:#edf2f7;
+	color:black;
+}
+
+.regButton{
+	background-color:#d53f8c;
+	color:#fff5f7;
+	padding-left:1rem;
+	padding-right:1rem;
+	padding-top:.75rem;
+	padding-bottom:.75rem;
+	text-align:center;
+	border-radius:.5rem;
+	border: 0px;
+	font-weight:700;
+	font-size:.875rem;
+	text-decoration: none;
+
+}
+
+.regButton:hover{
+	background-color:#b83280;
+	color: white;
+	cursor: pointer;
+}

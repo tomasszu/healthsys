@@ -25,6 +25,24 @@ class doctorVisitController extends Controller
         return view('doctor.doctorVisit.patientProfile',['patient'=>$patient]);
     }
 
+    public function index_pers_id()
+    {
+        $pers_id=request('pers_id');
+        $patient=patient::where('pers_id',$pers_id)->first();
+        if($patient != NULL)
+        {
+            //dd($patient);
+            return view('doctor.doctorVisit.patientProfile',['patient'=>$patient]);
+        }
+        else
+        {
+                return back()->withErrors([
+                 'message' => 'Pacients ar šādu personas kodu neeksistē'
+                ]);
+        }
+            
+    }
+
     public function return_index($id)
     {
         $patient=patient::where('id',$id)->first();

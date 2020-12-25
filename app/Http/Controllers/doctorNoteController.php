@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\doctorNote;
 use App\Models\doctorClass;
 use App\Models\doctor;
+use App\Models\patient;
 use Illuminate\Http\Request;
 
 class DoctorNoteController extends Controller
@@ -16,10 +17,12 @@ class DoctorNoteController extends Controller
 
     }
 
-    public function index($id)
+    public function index(patient $patient)
     {
         $specialists=doctorClass::get();
-        return view('doctor.doctorVisit.doctorNote',compact('specialists'),['patient_id'=>$id]);
+        $patient_id = $patient->id;
+        $notes = $patient->notes->where('recepient',auth()->user()->role->doctor_class);
+        return view('doctor.doctorVisit.doctorNote',compact('specialists','patient_id','notes'));
     }
 
     public function create($id)

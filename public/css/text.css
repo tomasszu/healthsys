@@ -1,0 +1,32 @@
+h1{
+	float: left;
+}
+
+h1.about_text{
+	font-size: 50px;
+	margin: -5px;
+	color: darkslategray;
+}
+
+h3.about_text{
+	font-size: 30px;
+	color: darkslategray;
+
+}
+
+
+.about_text{
+	float: left;
+	width: 51%;
+	z-index: 1;
+	background-color: rgb(255,255,255,0.5);
+ }
+
+ div.criterion
+ {
+	float: right;
+	position: absolute;
+	top: calc(50% - 10px);
+	left: 80%;
+	z-index: -1;
+ }

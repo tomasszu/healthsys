@@ -15,8 +15,12 @@
    <h4>Kontakti :{{$patient->contacts}}</h4>
    <hr>
    <a href="/arsts/pacienta_vesture/{{$patient->id}}">Atvērt ārstniecības vēsturi</a>
-   <hr>   
-   <a href="/arsts/norikojums_pacientam/{{$patient->id}}">Izrakstīt norīkojumu / zīmi</a>
+   <hr>
+   @if(Auth::user()->role->doctor_class == 1)   
+     <a href="/arsts/norikojums_pacientam/{{$patient->id}}">Izrakstīt norīkojumu / zīmi</a>
+   @else
+     <a href="/arsts/norikojums_pacientam/{{$patient->id}}">Skatīt / izrakstīt norīkojumus un zīmes</a>
+   @endif
    <hr>   
    <a href="/arsts/izrakstit_recepti/{{$patient->id}}">Izrakstīt recepti</a>
    <hr>   

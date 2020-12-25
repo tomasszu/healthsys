@@ -1,28 +1,21 @@
-@extends('layouts.app')
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Pierakstīties</title>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="{{ asset('/css/base.css') }}">
-</head>
-<body>
-<h1>Pieraksties</h1>
-
+@extends('layouts.pinkForm')
+@section('content')
+	<h3 class="formHeader">Pieraksties</h3>
 	<form method="POST" action="/login">
 			{{ csrf_field() }}
-		  
-		  <label for="pers_id">Personas kods:</label>
-		  <input type="text" id="pers_id" name="pers_id"><br>
+			  
+		<label class="first" for="pers_id">Personas kods:</label>
+		<input class="second" type="text" id="pers_id" name="pers_id"><br>
 
-		  <label for="password">Parole:</label>
-		  <input type="password"  id="password" name="password"><br>
+		<label class="first" for="password">Parole:</label>
+		<input class="second" type="password"  id="password" name="password"><br>
 
-		  <input type="submit" value="Login">
-		  
-	  @include('layouts.errors')
+        <div class="formButtons">
+            <a href="/" class="cancelButton">Atpakaļ</a>
+            <input type="submit" value="Pieslēgties" class="regButton">
+        </div>
+			  
+	@include('layouts.errors')
 	</form>
+@stop
 
-</body>
-</html>

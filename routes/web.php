@@ -39,6 +39,9 @@ Route::get('/farmaceits',[App\Http\Controllers\pharmacistController::class, 'ind
 
 Route::get('/arsts/skatit_pacientu',[App\Http\Controllers\doctorVisitController::class, 'index']);
 
+Route::get('/arsts/specialists/skatit_pacientu',[App\Http\Controllers\doctorVisitController::class, 'index_pers_id']);
+
+
 Route::get('/arsts/skatit_pacientu/{id}',[App\Http\Controllers\doctorVisitController::class, 'return_index']);
 
 Route::get('/arsts/nonemt_pacientu',[App\Http\Controllers\doctorVisitController::class, 'remove_patient']);
@@ -50,7 +53,7 @@ Route::get('/arsts/pacienta_vesture/{id}',[App\Http\Controllers\medHistoryContro
 
 Route::post('/arsts/pacienta_vesture/{id}/pievienot',[App\Http\Controllers\medHistoryController::class, 'create']);
 
-Route::get('/arsts/norikojums_pacientam/{id}',[App\Http\Controllers\doctorNoteController::class, 'index']);
+Route::get('/arsts/norikojums_pacientam/{patient}',[App\Http\Controllers\doctorNoteController::class, 'index']);
 
 Route::post('/arsts/norikojums_pacientam/{id}/izrakstit',[App\Http\Controllers\doctorNoteController::class, 'create']);
 

@@ -17,8 +17,12 @@ class DoctorController extends Controller
 
     public function index()
     {
-        $assigned_patients=auth()->user()->role->patients()->get();
-        return view('doctor.index',compact('assigned_patients'));
+        if(auth()->user()->role->doctor_class == 1)
+        {
+            $assigned_patients=auth()->user()->role->patients()->get();
+            return view('doctor.index',compact('assigned_patients'));
+        }
+        else return view('doctor.index');
     }
 
     /**
