@@ -10,19 +10,14 @@
 </head>
 <body class="profile">
   @include('layouts.navbar')
+  @extends('layouts.sidebar')
   <div class="profile">
-    <div class="sidebar">
-      <div class="sidebarItemsCenter">
-      <h3 class="barh3">Sveicināti, {{Auth::user()->name}} </h3><br>
-      <h4 class="barh4">Pacienta profils</h4><br>
-      </div>
-          <ul class="sidebarUl">
-             <li><a class="sidebarA" href="/logout">Izrakstīties</a></li> 
+    @section('sidebarOptions')
              <li><a class="sidebarA" href="/pacients/{{Auth::user()->role->id}}/dati">Personas dati</a></li>
              <li><a class="sidebarA" href="/pacients/meklet_arstu">Meklēt ārstu</a></li> 
              <li><a class="sidebarA" href="/zinojumi/0">Ziņojumi</a></li>
-          </ul>
-      </div>
+             <li><a class="sidebarA" href="/logout">Izrakstīties</a></li> 
+    @stop
     <div class="mainbar">
       <button class="collapsible">Mans ģimenes ārsts</button>
       <div class="expandContent">
@@ -49,7 +44,6 @@
             <th class="thLong">{{ $medRecord->description }}</th>
           </tr>    
            @endforeach
-        </ul>
         </table>
       </div>
 
@@ -131,7 +125,6 @@
            @endif
            @endforeach
         </table>
-       <hr>
      </div>
        </div>   
    </div>

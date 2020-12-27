@@ -6,6 +6,7 @@ ul.navbar_bar {
   background-color: limegreen;
   position: sticky;
   top: 0;
+  transition: 5s;
 }
 
 .navbar_profile{

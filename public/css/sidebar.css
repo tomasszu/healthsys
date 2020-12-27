@@ -13,6 +13,7 @@
 	margin-left:0.5rem;
 	padding:.2rem;
 	margin-bottom:0.3rem;
+
 }
 
 .barh3{
@@ -20,6 +21,7 @@
 	font-size:1.05rem;
 	color:#4a5568;
 	letter-spacing:.025em;
+
 
 }
 
@@ -46,10 +48,12 @@
 	border-radius:.375rem; /*rounded-md*/
 	font-weight:500; /*font-medium*/
   	text-decoration: none;
+
 }
 
 .sidebarA:hover{
 	background-color:palegreen; /*bg-gray-200*/
+
 }
 
 .sidebarA:focus{

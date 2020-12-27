@@ -1,72 +1,90 @@
-@extends('layouts.app')
+@extends('layouts.pinkForm')
 @section('content')
 
-<h1>Izrakstīt pacientam zīmi / norīkojumu</h1>
-
-<hr>
-
+<h3 class="formHeader">Izrakstīt pacientam zīmi / norīkojumu</h3>
 <form method="POST" action="/arsts/norikojums_pacientam/{{$patient_id}}/izrakstit">
 	{{ csrf_field() }}
 
-  <label for="recepient">Kam paredzēts izraksts:</label>
-  <select name="recepient">
+  <label class="first" style="margin-top: -5px" for="recepient">Kam paredzēts izraksts:</label>
+  <select class="second" name="recepient">
       <option selected="selected" value="">
         <?php 
             foreach ($specialists as $specialist) {
             echo '<option value="'.$specialist->id.'">' . $specialist->name .'</option>'."\r\n";
              }
         ?>
+      </option>
   </select><br>
 
-  <label for="diagnosis">Pamatslimība:</label>
-  <input type="text" name="diagnosis"><br>
+  <label class="first" style="margin-top: -5px" for="diagnosis">Pamatslimība:</label>
+  <input class="second" type="text" name="diagnosis"><br>
 
-  <label for="complications">Sarežģījumi (blakusslimības):</label>
-  <input type="text" name="complications"><br>
+  <label class="first" style="margin-top: -5px" for="complications">Sarežģījumi (blakusslimības):</label>
+  <input class="second" type="text" name="complications"><br>
 
-  <label for="recomendations">Rekomendācijas, ārsta slēdziens, izmeklējumu un rehabilitācijas nepieciešamība:</label><br>
+  <label class="first" style="margin-top: -5px" for="recomendations">Rekomendācijas, ārsta slēdziens, izmeklējumu un rehabilitācijas nepieciešamība:</label><br>
 
-  <textarea name="recomendations" id="recomendations"></textarea><br>
+  <textarea class="second" style="margin-top: 5px" name="recomendations" id="recomendations"></textarea><br>
 
-  <label for="regime">Režīma norādījumi:</label>
-  <input type="radio" id="stacionars" name="regime" value="Arstesana stacionara">
-  <label for="male">Ārstēšana stacionārā </label>
-  <input type="radio" id="majas" name="regime" value="Majas rezims">
-  <label for="female">Mājas režīms </label>
-  <input type="radio" id="brivais" name="regime" value="Brivais rezims">
-  <label for="other">Brīvais režīms </label><br>
-  <input type="submit" value="Izrakstīt">
+  <h4>Režīma norādījumi:</h4>
+  <input class="second" type="radio" id="stacionars" name="regime" value="Arstesana stacionara">
+  <label class="first" for="stacionars">Ārstēšana stacionārā </label>
+  <input class="second" type="radio" id="majas" name="regime" value="Majas rezims">
+  <label class="first" for="majas">Mājas režīms </label>
+  <input class="second" type="radio" id="brivais" name="regime" value="Brivais rezims">
+  <label class="first" for="brivais">Brīvais režīms </label><br>
 
-<hr>
+  @include('layouts.errors')
+    <div class="formButtons">
+      <a href="/arsts/skatit_pacientu/{{$patient_id}}" class="cancelButton">Atpakaļ</a>
+      <input type="submit" value="Izrakstīt" class="regButton">
+   </div>
+   
+</form>
 
   @if(Auth::user()->role->doctor_class != 1)
-    <h1>Man paredzētie norīkojumi:</h1>
-    <ul>
-       @foreach ($notes as $note)
-           <li>Datums :{{ $note->created_at }}</li>
-           <h5>Izrakstošais ārsts :</h5>
-           <p> {{ $note->reporting_doctor->name }}</p>
-           <h5>Pamatslimība:</h5>
-           <p>{{ $note->diagnosis }}</p>
-           @if($note->complications != NULL)
-             <h5>Sarežģījumi (blakusslimības):</h5>
-             <p>{{ $note->complications }}</p>
-           @endif
-           <h5>Rekomendācijas, ārsta slēdziens, izmeklējumu un rehabilitācijas nepieciešamība:</h5>
-           <p>{{ $note->recomendations }}</p>
-           @if($note->regime != NULL)
-             <h5>Režīma norādījumi:</h5>
-             <p>{{ $note->regime }}</p>
-           @endif
-           <hr>
-       @endforeach
-    </ul>
+  <button class="collapsibleP">Man paredzētie norīkojumi</button>
+    <div class="expandContent">
+        <table>
+           @foreach ($notes as $note)
+            <tr>
+            <th colspan="2" class="topRowP">Izrakstošais ārsts : {{ $note->reporting_doctor->name }}</th>
+            </tr>
+            <tr>
+              <td class="thSmaller">Datums :</td>
+              <td class="thSmaller">{{ $note->created_at }}</td>
+            </tr>
+               @if($note->recepient != NULL)
+            <tr>
+                 <td class="thSmaller"> Kam paredzēts izraksts:</td>
+                 <td class="thSmaller">{{ $note->recepient_spec->name }}</td>
+            </tr>
+               @endif
+               @if($note->complications != NULL)
+            <tr>
+                 <td>Pamatslimība:</td>
+                 <td>{{ $note->diagnosis }}</td>
+            </tr>  
+               @endif
+            <tr>
+                 <td>Sarežģījumi (blakusslimības):</td>
+                 <td>{{ $note->complications }}</td>
+            </tr>
+            <tr>
+                 <td class="thSmaller">Rekomendācijas, ārsta slēdziens, izmeklējumu un rehabilitācijas nepieciešamība:</td>
+                 <td class="thSmaller">{{ $note->recomendations }}</td>
+            </tr>
+               @if($note->regime != NULL)
+            <tr>
+                 <td class="thSmaller">Režīma norādījumi:</td>
+                 <td class="thSmaller">{{ $note->regime }}</td>
+            </tr>  
+               @endif
+           @endforeach
+        </table>
+  </div>
+  <script src="{{ asset('js/collapseButton.js')}}"></script> 
   @endif
-  @include('layouts.errors')
 
-   <a href="/arsts/skatit_pacientu/{{$patient_id}}">Atpakaļ</a>   
 
-</form>
-<hr>
-
-@endsection
+@stop

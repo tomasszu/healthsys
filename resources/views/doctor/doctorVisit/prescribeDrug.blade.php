@@ -1,9 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.pinkForm')
 @section('content')
 
-<h1>Izrakstīt pacientam {{$patient->name}} recepti medikamentam</h1>
-
-<hr>
+<h3 class="formHeader">Izrakstīt pacientam {{$patient->name}} recepti medikamentam</h3>
 
 <form method="POST" action="/arsts/recepte_pacientam/{{$patient->id}}/izrakstit">
 	{{ csrf_field() }}
@@ -17,13 +15,13 @@
              }
         ?>
   </select><br>
-
-  <input type="submit" value="Izrakstīt">
-
   @include('layouts.errors')
-</form>
+  <div class="formButtons">
+  <a href="/arsts/skatit_pacientu/{{$patient->id}}" class="cancelButton">Atpakaļ</a>
+  <input type="submit" value="Izrakstīt" class="regButton">
+  </div>
 
-<hr>
-   <a href="/arsts/skatit_pacientu/{{$patient->id}}">Atpakaļ</a>   
+
+</form>
 
 @endsection

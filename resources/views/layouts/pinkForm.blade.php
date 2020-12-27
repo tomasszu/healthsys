@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Reģistrēties</title>
+  <title>Informācijas ievade</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="{{ asset('/css/base.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('/css/pinkForm.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('/css/profile.css') }}">
 </head>
 <body class="pinkForm">
   <div class="roundedForm">
