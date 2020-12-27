@@ -16,12 +16,15 @@ class CreatePatientsTable extends Migration
         Schema::create('patients', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
+            $table->integer('pers_id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('family_doctor_id');
+            $table->unsignedBigInteger('family_doctor_id')->nullable();
             $table->foreign('family_doctor_id')->references('id')->on('doctors');
             $table->text('name');
+            $table->integer('age');
             $table->text('contacts');
+            $table->string('address')->nullable();
             $table->timestamps();
         });
     }

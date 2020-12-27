@@ -18,7 +18,7 @@ class CreateMedHistoriesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('patient_id');
             $table->foreign('patient_id')->references('id')->on('patients');
-            $table->text('diagnosis');
+            $table->text('diagnosis')->nullable();
             $table->text('description');
             $table->timestamps();
         });

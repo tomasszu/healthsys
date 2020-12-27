@@ -11,6 +11,7 @@
 </head>
 <body class="profile">
   @include('layouts.navbar')
+  @include('layouts.errors')
   @extends('layouts.sidebar')
   <div class="profile">
    @section('sidebarOptions')
@@ -82,7 +83,6 @@
           </div>
         </div>
         @endif
-      @include('layouts.errors')
     </div>
    </div>  
    <script src="{{ asset('js/collapseButton.js')}}"></script> 

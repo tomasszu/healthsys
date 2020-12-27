@@ -24,6 +24,9 @@
       @endif
       @if(Auth::check())
       <div class="izvele">
+        <a href="/profils"> Profils </a>
+      </div>
+      <div class="izvele">
         <a href="/logout"> Izrakstīties </a>
       </div>
     </div>

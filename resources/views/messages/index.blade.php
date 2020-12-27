@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/search.css') }}">   
 </head>
 <body>
+        @include('layouts.errors')
   <h1>Ziņojumu sadaļa</h1>
   <h2>Sastādīt ziņojumu:</h2>
   @if($flag!=3)
@@ -29,7 +30,6 @@
           <label for="text">Ziņojums:</label>
           <textarea class="textarea" name="text" id="text" required></textarea><br>
           <input type="submit" value="Sūtīt" class="cancelButton">
-        @include('layouts.errors')
     </form>
   </div>
   @endif

@@ -13,7 +13,7 @@ class CreatePatientDrugTable extends Migration
      */
     public function up()
     {
-        Schema::create('patient_drug', function (Blueprint $table) {
+        Schema::create('patient_drugs', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
             $table->unsignedBigInteger('patient_id');

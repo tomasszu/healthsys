@@ -7,3 +7,12 @@ body{
 	padding: 15px;
 	
 }
+
+.errorLog{
+	position: sticky;
+	background-color: crimson;
+	color:black;
+	margin: 10px;
+	padding: 8px;
+	border-radius: 10px;
+}

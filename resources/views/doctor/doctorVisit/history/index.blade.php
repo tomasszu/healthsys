@@ -10,6 +10,7 @@
     </head>
   <body>
   @include('layouts.navbar')
+    @include('layouts.errors')
   <h2>Jauns ieraksts:</h2>
 
 <form method="POST" action="/arsts/pacienta_vesture/{{$patient_id}}/pievienot">
@@ -20,7 +21,6 @@
     <textarea name="description" id="description" class=" textarea select"></textarea>
     <button class="goButton" type="submit">Saglabāt</button>
 
-    @include('layouts.errors')
 </form>
 <hr>
 <h1>Pacienta medicīniskā vēsture</h1>

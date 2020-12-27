@@ -88,5 +88,5 @@ Route::get('/zinojumi/{message}/skatit',[App\Http\Controllers\MessageController:
 
 //Auth::routes();
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/profils', [App\Http\Controllers\HomeController::class, 'index']);
 

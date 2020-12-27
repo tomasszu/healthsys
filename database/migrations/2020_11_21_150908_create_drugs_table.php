@@ -15,8 +15,8 @@ class CreateDrugsTable extends Migration
     {
         Schema::create('drugs', function (Blueprint $table) {
             $table->id();
-            $table->text('name');
-            $table->text('producer');        
+            $table->string('name');
+            $table->string('producer');        
             $table->text('description');
             $table->timestamps();
         });

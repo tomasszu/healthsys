@@ -23,11 +23,10 @@
 
           <label class="first" for="password_confirmation">Parole vēlreiz:</label>
           <input class="second" type="password" name="password_confirmation"><br>
-      
+          @include('layouts.errors')
           <div class="formButtons">
               <a href="/" class="cancelButton">Atpakaļ</a>
               <input type="submit" value="Reģistrēties" class="regButton">
           </div>
-          @include('layouts.errors')
         </form>
         @stop

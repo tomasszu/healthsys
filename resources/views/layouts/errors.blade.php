@@ -1,5 +1,6 @@
 @if (count($errors))
 
+<div class="errorLog">
 <ul>
 	@foreach ($errors->all() as $error)
 
@@ -8,5 +9,6 @@
 	@endforeach
 
 </ul>
+</div>
 
 @endif
