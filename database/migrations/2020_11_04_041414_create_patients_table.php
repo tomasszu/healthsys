@@ -16,7 +16,7 @@ class CreatePatientsTable extends Migration
         Schema::create('patients', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->integer('pers_id');
+            $table->string('pers_id')->unique();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('family_doctor_id')->nullable();

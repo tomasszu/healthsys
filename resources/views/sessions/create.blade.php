@@ -6,10 +6,10 @@
 			{{ csrf_field() }}
 			  
 		<label class="first" for="pers_id">Personas kods:</label>
-		<input class="second" type="text" id="pers_id" name="pers_id"><br>
+		<input class="second" type="text" id="pers_id" name="pers_id" required><br>
 
 		<label class="first" for="password">Parole:</label>
-		<input class="second" type="password"  id="password" name="password"><br>
+		<input class="second" type="password"  id="password" name="password" required><br>
 		@include('layouts.errors')
 
         <div class="formButtons">
