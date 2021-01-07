@@ -1,5 +1,6 @@
 @extends('layouts.pinkForm')
 @section('content')
+  @include('layouts.errors')
 <h3 class="formHeader">Izrakstīt pacientam zīmi / norīkojumu</h3>
 <form method="POST" action="/arsts/norikojums_pacientam/{{$patient_id}}/izrakstit">
 	{{ csrf_field() }}
@@ -32,7 +33,6 @@
   <label class="first" for="majas">Mājas režīms </label>
   <input class="second" type="radio" id="brivais" name="regime" value="Brivais rezims">
   <label class="first" for="brivais">Brīvais režīms </label><br>
-  @include('layouts.errors')
     <div class="formButtons">
       <a href="/arsts/skatit_pacientu/{{$patient_id}}" class="cancelButton">Atpakaļ</a>
       <input type="submit" value="Izrakstīt" class="regButton">

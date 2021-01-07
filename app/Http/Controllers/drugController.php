@@ -24,6 +24,10 @@ class drugController extends Controller
     public function index()
     {
         $patient=patient::where('pers_id',request('pers_id'))->first();
+        if($patient == NULL){
+            return back()->withErrors([
+            'message' => 'Pacients ar šādu pers. kodu neeksistē'
+            ]);        }
 
         $prescriptions=$patient->prescriptions()->latest()->get();
         return view('drugs.patient_index',compact('prescriptions','patient'));

@@ -30,7 +30,7 @@
         <div class="padder">
        <form method="GET" action="/arsts/skatit_pacientu">
           {{ csrf_field() }}
-         	<select name="patient" class="select">
+         	<select name="patient" class="select" required>
         	  <option selected="selected" value=""></option>
         	  <?php 
                 foreach ($assigned_patients as $patient) {
@@ -48,7 +48,7 @@
           <form method="POST" action="/arsts/pienemt_prakse">
             {{ csrf_field() }}
             <label for="pers_id">Personas kods:</label>
-              <input type="number" name="pers_id" class="select">
+              <input type="number" name="pers_id" class="select" required>
               <input class="goButton" type="submit" value="Pieņemt">
           </form>
         </div>
@@ -58,7 +58,7 @@
         <div class="padder">
          <form method="GET" action="/arsts/nonemt_pacientu">
             {{ csrf_field() }}
-            <select name="patient" class="select">
+            <select name="patient" class="select" required>
               <option selected="selected" value=""></option>
               <?php 
                   foreach ($assigned_patients as $patient) {

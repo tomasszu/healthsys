@@ -9,7 +9,7 @@
     <input class="second" type="number" style="margin-top: -15px" name="age" value="{{$patient->age}}" min="0" required><br>
 
     <label class="first" style="height: 65px"for="contacts">Kontaktinformācija:</label><br>
-    <textarea class="second" name="contacts" style="margin-top: -5px" rows="3">{{$patient->contacts}}</textarea><br>
+    <textarea class="second" name="contacts" style="margin-top: -5px" rows="3" required>{{$patient->contacts}}</textarea><br>
 
     <label class="first" for="address">Adrese:</label><br>
     <input class="second" type="text" name="address" value="{{$patient->address}}"><br>

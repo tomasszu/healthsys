@@ -18,8 +18,8 @@ class registrationController extends Controller
       	
       $this->validate(request(), [
        'name' => 'required',
-       'pers_id' => 'required',
-       'email' => 'required',
+       'pers_id' => 'required|unique:users',
+       'email' => 'required|unique:users',
        'age' => 'required',
        'contacts' => 'required',
        'password' => 'required|confirmed'

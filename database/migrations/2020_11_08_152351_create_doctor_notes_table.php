@@ -21,7 +21,7 @@ class CreateDoctorNotesTable extends Migration
             $table->unsignedBigInteger('recepient')->nullable();
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->foreign('reporting_doctor_id')->references('id')->on('doctors');
-            $table->foreign('recepient')->references('id')->on('doctors');
+            $table->foreign('recepient')->references('id')->on('doctor_classes');
             $table->text('diagnosis')->nullable();
             $table->text('complications')->nullable();
             $table->text('recomendations');

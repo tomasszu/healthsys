@@ -13,7 +13,9 @@
   <h1>Ziņojumu sadaļa</h1>
   <h2>Sastādīt ziņojumu:</h2>
   @if($flag!=3)
+    @if(Auth()->user()->role->family_doctor_id != NULL)
     <a href="/zinojumi/1" class="goButton">Ģimenes ārstam</a>
+    @endif
     <a href="/pacients/meklet_arstu" class="goButton">Meklēt speciālistu</a>
   @endif
   @if($flag!=0)
@@ -25,7 +27,7 @@
           <input type="hidden" id="receiver" name="receiver" value="{{$recepient->user->id}}">
         @else
           <label for="pers_id">Personas kods:</label>
-          <input type="number" name="pers_id" required><br>
+          <input type="text" name="pers_id" required><br>
         @endif
           <label for="text">Ziņojums:</label>
           <textarea class="textarea" name="text" id="text" required></textarea><br>

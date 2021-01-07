@@ -67,6 +67,9 @@ class MessageController extends Controller
         }
         else
         {
+            $this->validate(request(), [
+               'pers_id' => 'exists:patients',
+              ]);
             $pers_id = request('pers_id');
             $patient = patient::where('pers_id',$pers_id)->first();
             $message->for_user = $patient->user_id;
