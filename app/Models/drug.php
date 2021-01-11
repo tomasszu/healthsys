@@ -9,11 +9,13 @@ class drug extends Model
 {
     use HasFactory;
 
+    // atgriež aptieku inventāra ierakstus par šo medikamentu
     public function availability()
     {
         return $this->hasMany('App\Models\drug_inventory');
     }
 
+    //atgriež pašreizējā lietotāja (šo f-ju var izsaukt farmaceits) aptiekas inventārā esošo šī medikamenta daudzumu
     public function count()
     {
     	$inventory_records = $this->availability()->get();

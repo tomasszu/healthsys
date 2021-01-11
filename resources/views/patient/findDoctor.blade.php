@@ -29,7 +29,7 @@
     <h3>Speciālisti kategorijā <i>{{$specialist->name}}</i>:</h3>
        @foreach ($doctors as $doctor)
        <div class="oneResult">
-           <h2>{{ $doctor->name }}</h2>
+           <h2>{{ $doctor->practice_name }}</h2>
            <p>{{ $doctor->info }}</p>
            <form method="GET" class="button_form" action="/zinojumi/2">
               <input type="hidden" id="recepient" name="recepient" value="{{$doctor->id}}">

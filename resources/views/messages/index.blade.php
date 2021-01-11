@@ -27,7 +27,7 @@
           <input type="hidden" id="receiver" name="receiver" value="{{$recepient->user->id}}">
         @else
           <label for="pers_id">Personas kods:</label>
-          <input type="text" name="pers_id" required><br>
+          <input type="text" name="pers_id" pattern="[0-9]{6}-[0-9]{5}" title="Formāts: xxxxxx-xxxxx" required><br>
         @endif
           <label for="text">Ziņojums:</label>
           <textarea class="textarea" name="text" id="text" required></textarea><br>

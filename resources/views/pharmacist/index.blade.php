@@ -20,7 +20,7 @@
     <div class="mainbar">
       <button class="collapsible">Farmācijas informācija</button>
       <div class="expandContent">
-   <h3>{{Auth::user()->role->name}}</h3>
+   <h3>{{Auth::user()->role->pharmacy_name}}</h3>
    <h3>{{Auth::user()->role->info}}</h3>
  </div>
       <button class="collapsible">Apskatīt valstī reģistrētos medikamentus</button>
@@ -95,7 +95,7 @@
       <form method="GET" action="/farmaceits/klienta_receptes">
         {{ csrf_field() }}
         <label for="pers_id">Personas kods:</label>
-          <input type="number" name="pers_id" required>
+          <input type="text" name="pers_id" pattern="[0-9]{6}-[0-9]{5}" title="Formāts: xxxxxx-xxxxx" required>
           <input class="goButton" type="submit" value="Skatīt">
       </form>
     </div>

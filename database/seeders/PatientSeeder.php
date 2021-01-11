@@ -18,8 +18,6 @@ class PatientSeeder extends Seeder
     {
         DB::table('patients')->insert([
         	'id' => 11,
-            'name' => 'Andris Bērziņš',
-            'pers_id' => '0000',
             'user_id' => 11,
             'family_doctor_id' => 2,
             'age' => '27',
@@ -28,8 +26,6 @@ class PatientSeeder extends Seeder
         ]);
         DB::table('patients')->insert([
         	'id' => 12,
-            'name' => 'Jānis Bērziņš',
-            'pers_id' => '1111',
             'user_id' => 12,
             'family_doctor_id' => 2,
             'age' => '32',
@@ -38,8 +34,6 @@ class PatientSeeder extends Seeder
         ]);
         DB::table('patients')->insert([
         	'id' => 13,
-            'name' => 'Tomass Zariņš',
-            'pers_id' => '6666',
             'user_id' => 17,
             'family_doctor_id' => 9,
             'age' => '40',
@@ -48,8 +42,6 @@ class PatientSeeder extends Seeder
         ]);
         DB::table('patients')->insert([
         	'id' => 14,
-            'name' => 'Liene Krūmiņa',
-            'pers_id' => '7777',
             'user_id' => 18,
             'family_doctor_id' => 9,
             'age' => '37',

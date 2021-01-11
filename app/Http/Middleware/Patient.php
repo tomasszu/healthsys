@@ -8,6 +8,7 @@ use Auth;
 
 class Patient
 {
+	//pārbauda vai sistēmas lietotajs ir pacients
     public function handle(Request $request, Closure $next)
     {
         if (Auth::user()->user_class != 1) {

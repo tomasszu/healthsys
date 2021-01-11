@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{$patient->name}}</title>
+    <title>{{$patient->user->name}}</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/base.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/navbar.css') }}">
@@ -9,11 +9,11 @@
 </head>
 <body>
   @include('layouts.navbar')
-   <h1>{{$patient->name}}</h1>
+   <h1>{{$patient->user->name}}</h1>
    <h3> Pacienta pārskats</h3>
    <div class="oneResult">
-   <h4>Vārds, Uzvārds :{{$patient->name}}</h4>
-   <h4>Pers. kods :{{$patient->pers_id}}</h4>
+   <h4>Vārds, Uzvārds :{{$patient->user->name}}</h4>
+   <h4>Pers. kods :{{$patient->user->pers_id}}</h4>
    <h4>Vecums :{{$patient->age}}</h4>
    <h4>Kontakti :{{$patient->contacts}}</h4>
    <a href="/arsts/pacienta_vesture/{{$patient->id}}" class="strongButton">Atvērt ārstniecības vēsturi</a>

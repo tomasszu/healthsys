@@ -1,7 +1,7 @@
 @extends('layouts.pinkForm')
 @section('content')
 
-<h3 class="formHeader">Izrakstīt pacientam {{$patient->name}} recepti medikamentam</h3>
+<h3 class="formHeader">Izrakstīt pacientam {{$patient->user->name}} recepti medikamentam</h3>
 
 <form method="POST" action="/arsts/recepte_pacientam/{{$patient->id}}/izrakstit">
 	{{ csrf_field() }}

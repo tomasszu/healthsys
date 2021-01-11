@@ -13,6 +13,7 @@ use App\Mail\MailNotify;
 class MessageController extends Controller
 {
 
+    //Izmantojot starpprogrammatūru noskaidro vai kontrolieri mēģina izmantot autentificējies un ne-farmaceita lomas lietotajs 
     public function __construct()
     {
        $this->middleware('auth')->except([]);
@@ -20,66 +21,63 @@ class MessageController extends Controller
 
     }
 
+    //atgriež ziņojumu skatu
+    //izmanto karogu sistēmu, kas ļauj noteikt kādam ir jāizskatās skatam konkrētos brīžos un kādu informāciju tam jāpadod
     public function index($flag)
     {
+        // sameklē esošās ziņas, ko lietotājs saņēmis
         $messages = message::where('for_user', auth()->id())->latest()->get();
-        if($flag==1)
+        // pacients ir atlasījis ģimenes ārstu kā savas ziņās saņēmēju
+        if($flag==1) 
         {
            $recepient=auth()->user()->role->family_doc;
             return view('messages.index',compact('messages','recepient','flag'));
         }
+        // pacients ir sameklējis ārstu-speciālistu, kam nosūtīt ziņojumu
         if($flag==2)
         {
             $recepient=Doctor::where('id',request('recepient'))->first();
             return view('messages.index',compact('messages','recepient','flag'));
         }
+        // neviens adresāts vēl nav atlasīs
         else return view('messages.index',compact('messages','flag'));        
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // sūtīt ziņojumu
     public function store(Request $request)
     {
         $message = new message;
         $message->from_user = auth()->id();
         $message->message = request('text');
-        if(request('receiver') != NULL)
+        if(request('receiver') != NULL) // ja izvēlēts saņēmējs
         {
             $message->for_user = request('receiver');
             $message->save();
-            //dd($email);
+            //nosūtīt e-pastu saņēmējam, par šo ziņojumu sistēmā
             $this->email(request('text'),request('receiver'));
             return redirect('/zinojumi/0');
         }
-        else
+        else // ja saņēmējs ierakstīts manuāli ar personas kodu
         {
-            $this->validate(request(), [
-               'pers_id' => 'exists:patients',
-              ]);
-            $pers_id = request('pers_id');
-            $patient = patient::where('pers_id',$pers_id)->first();
-            $message->for_user = $patient->user_id;
+            // mēģina sameklēt šādu lietotaju ar pacienta lomu
+            try{
+                $user=User::where('pers_id',request('pers_id'))->first();
+                $patient=patient::where('user_id', $user->id)->first();
+            }
+            catch(\Exception $e) {
+                return back()->withErrors([
+                    'message' => 'Pacients ar šādu pers. kodu neeksistē'
+                    ]);
+            }
+            $message->for_user = $user->id;
             $message->save();
-            $this->email(request('text'),$patient->user_id);
+            $this->email(request('text'),$user->id);
             return redirect('/zinojumi/3');
         }
 
     }
 
+    //Nosūta e-pastu adresātam ar paziņojumu par ziņu sistēmā
     public function email($text,$receiver)
     {
             Mail::raw($text, function ($mail) use ($receiver) {
@@ -90,48 +88,10 @@ class MessageController extends Controller
             });
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\message  $message
-     * @return \Illuminate\Http\Response
-     */
-    public function show(message $message)
+    //atgriež ziņojuma detalizētu skatu
+   public function show(message $message)
     {
         return view('messages.show',compact('message'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\message  $message
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(message $message)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\message  $message
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, message $message)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\message  $message
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(message $message)
-    {
-        //
-    }
 }

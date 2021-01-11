@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>{{ $patient->name }} receptes</title>
+	<title>{{ $patient->user->name }} receptes</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="{{ asset('/css/base.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/navbar.css') }}">
@@ -11,7 +11,7 @@
 <body>
   @include('layouts.navbar')
     @include('layouts.errors')
-	<h1>Pieejamās medikamentu receptes klientam {{ $patient->name }}:</h1>
+	<h1>Pieejamās medikamentu receptes klientam {{ $patient->user->name }}:</h1>
       <table>
            @foreach ($prescriptions as $prescription)
            @if($prescription->active == 1)
@@ -31,7 +31,7 @@
            <td>{{ $prescription->drug->producer }}</td>
            <tr>
            <td>Izrakstošais ārsts</td>
-           <td>{{ $prescription->doctor->name }}</td>
+           <td>{{ $prescription->doctor->practice_name }}</td>
            </tr>
            <tr>
            <td>Apraksts</td>

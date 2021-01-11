@@ -9,6 +9,7 @@ class drug_inventory extends Model
 {
     use HasFactory;
 
+    //atgriež inventāra ierkastā iekļauto medikamentu
     public function drug()
     {
         return $this->belongsTo('App\Models\drug');

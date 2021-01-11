@@ -9,6 +9,7 @@ class message extends Model
 {
     use HasFactory;
 
+    //atgriež ziņas sūtītāju
     public function sender()
     {
         return $this->belongsTo('App\Models\User','from_user');

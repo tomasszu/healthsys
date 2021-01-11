@@ -8,11 +8,13 @@ use App\Models\patient;
 
 class registrationController extends Controller
 {
+    // reģistrācijas formas atgriešana
     public function create()
     {
       return view('registration.create');	
     }
 
+    // registracijas formas pārbaude un lietotāja saglabāšana
     public function store()
     {
       	
@@ -27,6 +29,7 @@ class registrationController extends Controller
 
       ]);
 
+      // izveido jaunu lietotaju
       $user = new User;
     	$user->name = request('name');
     	$user->pers_id = request('pers_id');
@@ -34,24 +37,16 @@ class registrationController extends Controller
       $user->email = request('email');
     	$user->save();
 
+      // izveido lietotajam atbilstošu pacienta lomu
       $patient = new patient;
       $patient->user_id = $user->id;
-      $patient->name = request('name');
-      $patient->pers_id = request('pers_id');
       $patient->age = request('age');      
       $patient->contacts = request('contacts');
       $patient->save();
 
+      // uzreiz pieraksta pacientu
     	auth()->login($user);
 
         return redirect('/pacients');
-    }
-
-    public function update()
-    {
-      //dd(request('body'));
-      ;
-        User::where('id', request('user') )->update(['Permission'=> request('privilige')]);
-      return redirect('/profile');
     }
 }

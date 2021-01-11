@@ -21,7 +21,7 @@
     <div class="mainbar">
       <button class="collapsible">Prakses informācija</button>
       <div class="expandContent">
-       <h3>{{Auth::user()->role->name}}</h3>
+       <h3>{{Auth::user()->role->practice_name}}</h3>
        <h3>{{Auth::user()->role->info}}</h3>
       </div>
      @if(Auth::user()->role->doctor_class == 1)
@@ -34,7 +34,7 @@
         	  <option selected="selected" value=""></option>
         	  <?php 
                 foreach ($assigned_patients as $patient) {
-                echo '<option value="'.$patient->id.'">' . $patient->name . ' ' . $patient->pers_id . '</option>'."\r\n";
+                echo '<option value="'.$patient->id.'">' . $patient->user->name . ' ' . $patient->user->pers_id . '</option>'."\r\n";
                  }
               ?>
       	  </select>
@@ -48,7 +48,7 @@
           <form method="POST" action="/arsts/pienemt_prakse">
             {{ csrf_field() }}
             <label for="pers_id">Personas kods:</label>
-              <input type="number" name="pers_id" class="select" required>
+              <input type="text" name="pers_id" class="select" pattern="[0-9]{6}-[0-9]{5}" title="Formāts: xxxxxx-xxxxx" required>
               <input class="goButton" type="submit" value="Pieņemt">
           </form>
         </div>
@@ -62,7 +62,7 @@
               <option selected="selected" value=""></option>
               <?php 
                   foreach ($assigned_patients as $patient) {
-                  echo '<option value="'.$patient->id.'">' . $patient->name . ' ' . $patient->pers_id . '</option>'."\r\n";
+                  echo '<option value="'.$patient->id.'">' . $patient->user->name . ' ' . $patient->user->pers_id . '</option>'."\r\n";
                    }
                 ?>
             </select>
@@ -77,7 +77,7 @@
             <form method="GET" action="/arsts/specialists/skatit_pacientu">
               {{ csrf_field() }}
               <label for="pers_id">Personas kods:</label>
-                <input type="number" name="pers_id" required min="0">
+                <input type="text" name="pers_id" pattern="[0-9]{6}-[0-9]{5}" title="Formāts: xxxxxx-xxxxx" required>
                 <input class="goButton" type="submit" value="Pieņemt">
             </form>
           </div>

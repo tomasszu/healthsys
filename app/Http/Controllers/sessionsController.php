@@ -6,17 +6,13 @@ use Illuminate\Http\Request;
 
 class sessionsController extends Controller
 {
-
-	//public function __controller()
-    //{
-    //  $this->middleware('guest');
-    //}
-
+    // atgriež pierakstīšanās formu
     public function create()
     {
       return view('sessions.create');
     }
 
+    // pārbauda pieraksta informāciju un uzsāk sesiju
     public function store()
     {
       if(! auth()->attempt(request(['pers_id','password'])))
@@ -26,14 +22,17 @@ class sessionsController extends Controller
       	]);
       }
 
+      // ja pierakstījušais lietotājs ir pacients
       if(auth()->user()->user_class == 1)
       {
         return redirect('/pacients');
       }
+      // ja ārsts
       else if(auth()->user()->user_class == 2)
       {
         return redirect('/arsts');
       }
+      // ja farmaceits
       else if(auth()->user()->user_class == 3)
       {
         return redirect('/farmaceits');
@@ -42,7 +41,7 @@ class sessionsController extends Controller
 
 
     }
-
+    // beigt sesiju darbam ar sistēmu
     public function destroy()
     {
     	auth()->logout();

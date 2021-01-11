@@ -23,7 +23,7 @@
       <div class="expandContent">
        <h4> Pacients pierakstīts ģimenes ārsta praksē : </h4>
        @if($family_doctor != NULL)
-       <h5> {{$family_doctor->name}} </h5>
+       <h5> {{$family_doctor->practice_name}} </h5>
        <p> {{$family_doctor->info}} </p>
        @else
        <p> pacientam nepieciešams pierakstīties kādā ģimenes ārsta praksē </p>
@@ -52,7 +52,7 @@
         <table>
            @foreach ($notes as $note)
             <tr>
-            <th colspan="2" class="topRow">Izrakstošais ārsts : {{ $note->reporting_doctor->name }}</th>
+            <th colspan="2" class="topRow">Izrakstošais ārsts : {{ $note->reporting_doctor->practice_name }}</th>
             </tr>
             <tr>
               <td class="thSmaller">Datums :</td>
@@ -99,7 +99,7 @@
            <td>{{ $prescription->drug->producer }}</td>
            <tr>
            <td>Izrakstošais ārsts</td>
-           <td>{{ $prescription->doctor->name }}</td>
+           <td>{{ $prescription->doctor->practice_name }}</td>
            </tr>
            <tr>
            <td>Apraksts</td>
@@ -116,7 +116,7 @@
            <td class="expired">{{ $prescription->drug->producer }}</td>
            <tr>
            <td class="expired">Izrakstošais ārsts</td>
-           <td class="expired">{{ $prescription->doctor->name }}</td>
+           <td class="expired">{{ $prescription->doctor->practice_name }}</td>
            </tr>
            <tr>
            <td class="expired">Apraksts</td>

@@ -19,7 +19,7 @@ class PharmacistsSeeder extends Seeder
         DB::table('pharmacists')->insert([
         	'id' => 1,
         	'user_id' => 15,
-            'name' => 'A. Pannas aptieka',
+            'pharmacy_name' => 'A. Pannas aptieka',
             'info' => 'Juglas iela 2, Rīga |
 
 67520696 |
@@ -31,7 +31,7 @@ Sv Slēgts'
         DB::table('pharmacists')->insert([
         	'id' => 2,
         	'user_id' => 23,
-            'name' => 'A. Zivtiņas aptieka',
+            'pharmacy_name' => 'A. Zivtiņas aptieka',
             'info' => 'Malienas iela 4, Rīga |
 
 67520696 |

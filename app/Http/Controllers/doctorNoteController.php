@@ -10,28 +10,31 @@ use Illuminate\Http\Request;
 
 class DoctorNoteController extends Controller
 {
+    //Izmantojot starpprogrammatūru noskaidro vai kontrolieri mēģina izmantot autentificējies un ārsta lomas lietotajs 
     public function __construct()
     {
        $this->middleware('auth');
        $this->middleware('doctor');
 
     }
-
+    //atgriež norīkojumu skatu
     public function index(patient $patient)
     {
-        $specialists=doctorClass::get();
-        $patient_id = $patient->id;
+        $specialists=doctorClass::get(); // ar speciālizāciju sarakstu
+        $patient_id = $patient->id; // ar izvēlētā pacienta id
+        //ar pacientam jau izrakstītajiem norīkojumiem / zīmēm
         $notes = $patient->notes->where('recepient',auth()->user()->role->doctor_class);
         return view('doctor.doctorVisit.doctorNote',compact('specialists','patient_id','notes'));
     }
 
+    //saglabāt jaunu norīkojumu
     public function create($id)
     {
-        if(request('recomendations') != NULL)
+        if(request('recomendations') != NULL) // ja saņemti obligatie formas lauki
         {
-        $note=new doctorNote;
+        $note=new doctorNote; // jauna norīkojuma instance
         $note->patient_id = $id;
-        $reporting_doctor = auth()->user()->role;
+        $reporting_doctor = auth()->user()->role; //izrakstošais ārsts
         $note->reporting_doctor_id = $reporting_doctor->id;
         $note->recepient = request('recepient');
         $note->diagnosis = request('diagnosis');
@@ -50,59 +53,4 @@ class DoctorNoteController extends Controller
         }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\doctorNote  $doctorNote
-     * @return \Illuminate\Http\Response
-     */
-    public function show(doctorNote $doctorNote)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\doctorNote  $doctorNote
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(doctorNote $doctorNote)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\doctorNote  $doctorNote
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, doctorNote $doctorNote)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\doctorNote  $doctorNote
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(doctorNote $doctorNote)
-    {
-        //
-    }
 }

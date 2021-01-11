@@ -32,8 +32,11 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    //atgriež lietotājam piesaistītās grupas ierakstu (lomu)
     public function role()
     {
+        if($this != NULL)
+        {
         if($this->user_class == 1)
           {
             return $this->hasOne('App\Models\patient');
@@ -46,5 +49,10 @@ class User extends Authenticatable
           {
             return $this->hasOne('App\Models\pharmacist');
           }
+        }
+        else
+        {
+            return NULL;
+        }
     }
 }

@@ -12,7 +12,7 @@
   @if(Auth::user()->user_class==1)
     <h1>Ziņojums no {{$message->sender->name}} ({{$message->sender->role->speciality->name}})</h1>
   @else
-    <h1>Ziņojums no {{$message->sender->name}} (Pers.k. {{$message->sender->role->pers_id}})</h1>
+    <h1>Ziņojums no {{$message->sender->name}} (Pers.k. {{$message->sender->pers_id}})</h1>
   @endif
     <h2>{{ $message->created_at }}</h2>
     <div class="oneResult">

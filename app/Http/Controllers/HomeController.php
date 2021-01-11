@@ -6,21 +6,13 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    //Izmantojot starpprogrammatūru noskaidro vai kontrolieri mēģina izmantot autentificējies lietotajs 
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
+    // novirza lietotāju uz tā lietotāju grupai atbilstošo skatu.
     public function index()
     {
       if(auth()->user()->user_class == 1)

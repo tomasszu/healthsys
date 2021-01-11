@@ -11,11 +11,13 @@ class Doctor extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    // atgriež ārsta lietotāja (User) ierakstu.
     public function user()
     {
     	return $this->belongsTo(User::class);
     }
 
+    // atgriež ģimenes ārsta praksē pierakstīos pacientus
     public function patients()
     {
         if($this->doctor_class = 1)
@@ -25,6 +27,7 @@ class Doctor extends Authenticatable
     }
 
 
+    // atgriež ārsta specializāciju
     public function speciality()
     {
         return $this->belongsTo('App\Models\doctorClass','doctor_class');

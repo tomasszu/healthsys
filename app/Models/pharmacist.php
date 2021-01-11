@@ -9,6 +9,7 @@ class pharmacist extends Model
 {
     use HasFactory;
 
+    //atgriež farmaceita aptiekas medikamentu inventāru
     public function inventory()
     {
         return $this->hasMany('App\Models\drug_inventory');

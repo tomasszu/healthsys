@@ -20,7 +20,7 @@ class CreateDoctorsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('doctor_class');
             $table->foreign('doctor_class')->references('id')->on('doctor_classes');
-            $table->text('name');
+            $table->text('practice_name');
             $table->text('info');
             $table->timestamps();
         });

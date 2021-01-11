@@ -8,6 +8,7 @@ use Auth;
 
 class Pharmacist
 {
+	//pārbauda vai sistēmas lietotajs ir farmaceits
     public function handle(Request $request, Closure $next)
     {
         if (Auth::user()->user_class != 3) {

@@ -7,9 +7,9 @@ use App\Http\Controllers;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| Šeit tiek reģistrēti tīmekļa maršruti un kur pieprasījumam no kāda maršruta
+| būtu jānonāk (kurā kontrolierī, kontroliera funkcijā)
+| 
 |
 */
 
@@ -85,8 +85,6 @@ Route::post('/zinojumi/sutit',[App\Http\Controllers\MessageController::class, 's
 
 Route::get('/zinojumi/{message}/skatit',[App\Http\Controllers\MessageController::class, 'show']);
 
-
-//Auth::routes();
 
 Route::get('/profils', [App\Http\Controllers\HomeController::class, 'index']);
 

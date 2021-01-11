@@ -18,7 +18,7 @@ class CreatePharmacistsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->text('name');
+            $table->text('pharmacy_name');
             $table->text('info');
             $table->timestamps();
         });
